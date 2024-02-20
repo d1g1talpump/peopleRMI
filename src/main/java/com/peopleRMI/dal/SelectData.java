@@ -18,9 +18,8 @@ public class SelectData {
 		
 		String sql = "select * from people;";
 		
-		ResultSet rs = null;
-		
-		Connection conn = Connect.connectToDb();
+		ResultSet rs = null;		
+		Connection conn = Connect.getInstance().getConnection();
 		
 		try (Statement stmt = conn.createStatement();) {
 			
@@ -30,15 +29,7 @@ public class SelectData {
 			
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
-		} finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
+		}
 		
 		return people;
 	}
@@ -50,8 +41,7 @@ public class SelectData {
 		String sql = "select * from person where name = ?;";
 		
 		ResultSet rs = null;
-		new Connect();
-		Connection conn = Connect.connectToDb();
+		Connection conn = Connect.getInstance().getConnection();
 		
 		try (PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			
@@ -63,15 +53,7 @@ public class SelectData {
 			
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
-		} finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
+		}
 		
 		return people;				
 	}	

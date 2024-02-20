@@ -12,22 +12,15 @@ public class CreateTable {
 				+ "	id integer primary key AUTOINCREMENT,\n"
 				+ "	name text not null);";
 		
-		Connection conn = Connect.connectToDb();		
+		Connection conn = Connect.getInstance().getConnection();
+		
 		try (Statement stmt = conn.createStatement()){
 			
 			stmt.execute(sql);
 			
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
-		} finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
+		}
 	}
 
 }

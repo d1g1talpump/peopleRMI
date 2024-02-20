@@ -12,4 +12,5 @@ public interface PeopleService extends Remote {
 	public void createDB() throws RemoteException;
 	public void createTablePeople() throws RemoteException;
 	public void insertPerson(String name) throws RemoteException;
+	public void deletePeople(String name) throws RemoteException;
 }

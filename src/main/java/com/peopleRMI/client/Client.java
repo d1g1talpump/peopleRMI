@@ -35,6 +35,14 @@ public class Client {
 	    	
 	    	printPeopleToConsole(people);
 		}
+		
+		service.insertPerson("alex2");
+		service.insertPerson("alex3");
+		service.deletePeople("alex");
+		
+		people = service.getAllPeople();
+    	
+    	printPeopleToConsole(people);		
 	}
 
 	private static void printPeopleToConsole(List<Person> people) {
